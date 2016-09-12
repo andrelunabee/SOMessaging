@@ -325,7 +325,7 @@
     
     CGRect frame = self.frame;
     // calculate the absolute ending point (based on the window rather than superview, which could be contained in a tab bar or tool bar)
-    frame.origin.y = windowRect.size.height - frame.size.height - keyboardRect.size.height;
+    frame.origin.y = windowRect.size.height - frame.size.height - keyboardRect.size.height - 64;
     initialInputViewPosYWhenKeyboardIsShown = frame.origin.y;
     
     [self adjustTableViewWithCurve:YES scrollsToBottom:YES];
