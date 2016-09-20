@@ -70,7 +70,7 @@
     
     [self.view addSubview:self.tableView];
     
-    self.messageInputView = [[SOMessageInputView alloc] init];
+    self.messageInputView = [[SOMessageInputView alloc] initForWidth:self.view.frame.size.width];
     self.messageInputView.delegate = self;
     self.messageInputView.tableView = self.tableView;
     [self.view addSubview:self.messageInputView];

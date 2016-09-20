@@ -60,4 +60,6 @@
 - (void)adjustInputView;
 - (void)adjustPosition;
 
+- (id)initForWidth : (CGFloat) width ;
+
 @end

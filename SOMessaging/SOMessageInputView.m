@@ -35,6 +35,7 @@
     BOOL keyboardHidesFromDragging;
     UITapGestureRecognizer *tapGesture;
     UIPanGestureRecognizer *panGesture;
+    CGFloat initialWidth;
 }
 
 @property (weak, nonatomic) UIView *keyboardView;
@@ -43,17 +44,17 @@
 
 @implementation SOMessageInputView
 
-- (id)init
+- (id)initForWidth : (CGFloat) width
 {
     self = [super init];
     if (self) {
-        [self setupInitialData];
+        [self setupInitialData: width];
         [self setup];
     }
     return self;
 }
 
-- (void)setupInitialData
+- (void)setupInitialData : (CGFloat) width
 {
     self.textInitialHeight = 40.0f;
     self.textMaxHeight = 130.0f;
@@ -63,8 +64,9 @@
     
     CGRect frame = CGRectZero;
     frame.size.height = self.textInitialHeight;
-    frame.size.width = [UIScreen mainScreen].bounds.size.width;
+    frame.size.width = width;
     self.frame = frame;
+    self.backgroundColor = [UIColor redColor];
     
     self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
 }
@@ -130,6 +132,7 @@
 {
     CGRect frame = self.frame;
     frame.size.height = self.textInitialHeight;
+    
     self.frame = frame;
     
     if (!self.mediaButton.hidden) {
@@ -174,6 +177,7 @@
 {
     CGRect frame = self.frame;
     frame.origin.y = self.superview.bounds.size.height - frame.size.height;
+    //frame.size.width = self.superview.bounds.size.width ;
     self.frame = frame;
     
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.tableView.contentInset.top, 0.0, self.frame.size.height, 0.0);
